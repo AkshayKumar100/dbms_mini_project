@@ -1,4 +1,3 @@
-
 <html>
 <head>
 <style>
@@ -83,21 +82,21 @@ a{
 <div class="blocks">
   <a href="#">
     
-          <h2><a href = "mcase.php"><i><u>MY_CASES</u></i></a></h2>
+          <h2><a href = "my_case.php"><i><u>MY_CASES</u></i></a></h2>
      
   </a>
   <a href="#">
     
-          <h2><a href="mclient.php"><i><u>MY_CLIENTS</u></i></a></h2>
+          <h2><a href="my_client.php"><i><u>MY_CLIENTS</u></i></a></h2>
      
-          <h2><a href="jadv.php"><i><u>JUNIOR_ADVOCATES</u></i></a></h2>
+          <h2><a href="jr_adv.php"><i><u>JUNIOR_ADVOCATES</u></i></a></h2>
    
   </a>
   <a href="#">
     
-          <h2><a href="mpay.php"><i><u>FEES</u></i></a></h2>
+          <h2><a href="fee.php"><i><u>FEES</u></i></a></h2>
       
-          <h2><a href="prc.php"><i><u>LOG_OUT</u></i></a></h2>
+          <h2><a href="index.php"><i><u>LOG_OUT</u></i></a></h2>
    
   </a>
 </div>

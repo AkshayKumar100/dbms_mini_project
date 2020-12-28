@@ -15,7 +15,7 @@ body{
   font-weight:700;
   font-size:.9rem;/*1rem=16px*/
   letter-spacing: .1rem;
-  background: rgba(121, 120, 120, 0.6) !important;
+  background:black !important;
 }
 .navbar-brand img{
   height:2rem;
@@ -35,7 +35,7 @@ body{
 
 /*---Landing Page---*/
 .home-inner{
-  background-image:url('img/index.jpg') ;
+  background-image:url('img/hc.jpg') ;
 }
 .caption{
   width:100%;
@@ -77,7 +77,7 @@ body{
 
 /*quotes section*/
 .fixed{
-  background-image: url('img/index1.jpg');
+  background-color:rgb(157, 185, 185);
   z-index:-1;
 }
 .dark{

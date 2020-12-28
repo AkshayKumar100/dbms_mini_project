@@ -1,9 +1,17 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="bootstrap-4.5.3\css\bootstrap.min.css">
 <style>
 
-body {font-family: Arial, Helvetica, sans-serif;}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:  rgba(10,10,10,.4);
+}
 * {box-sizing: border-box; }
 
 /* Full-width input fields */
@@ -55,32 +63,10 @@ button:hover {
     padding: 16px;
 }
 
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: #474e5d;
-    padding-top: 50px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-}
 
 /* Style the horizontal ruler */
 hr {
     border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
 }
  
 /* The Close Button (x) */
@@ -112,33 +98,41 @@ hr {
        width: 100%;
     }
 }
+.contain{
+  width: 40%
+}
+h6{
+  color:red;
+}
 
 </style>
 </head>
 <body>
-
-<h2>Modal Signup Form</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
-
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="" method="post">
+<div class="container contain">
+  <form method="post">
     <div class="container">
-      <h1>Client Sign Up</h1>
-      <p>Please fill in this form to create an account.</p>
+      <h1 class='text-center'>Client Sign Up</h1>
+      Please fill in this form to create an account.
       <hr>
+
+      <?php
+      if(isset($_SESSION['error'])){
+        echo "<h6>ALL ENTRIES ARE MANDATORY</h6> <br>";
+      }
+      unset($_SESSION['error']);
+      ?>
+
       <label for="user_id"><b>User_id</b></label>
-      <input type="text" placeholder="Enter userid" name="user_id" required>
+      <input type="text" placeholder="Enter userid" name="user_id">
       
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <input type="text" placeholder="Enter Email" name="email">
       
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" placeholder="Enter Password" name="psw">
 
       <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat">
       
       <label>
         <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -146,26 +140,16 @@ hr {
 
       <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-        <button type="submit" name="submit" onclick="location.href=prc.php" class="signupbtn">Sign Up</button>
-      </div>
+      <div class='form-row justify-content-sm-center'>
+        <input class="btn btn-primary" type="submit" value="SIGN-IN" name="submit">
+        <div class="col-md-1"></div>
+        <form action="login_mani.php">
+        <input class="btn btn-dark" type="submit" name='add_later' value="CANCEL"> 
+        </form>
+    </div>
     </div>
   </form>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
+  </div>
 </body>
 </html>
 
@@ -174,28 +158,29 @@ window.onclick = function(event) {
 
 
 <?php 
-$servername = "127.0.0.1:3307";
-$username = "kvp";
-$password = "123";
-$dbname = "ecourts";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
+require 'conn.php';
+if(isset($_POST['add_later'])){
+        header('location: login_main.php');
+        return;
+    }
 
 if(isset($_POST['submit'])){
+  if(!empty($_POST["user_id"])&&!empty($_POST["email"])&&!empty($_POST["psw"])&&!empty($_POST["psw-repeat"])){
+    $id = $_POST["user_id"];
+    $email = $_POST["email"]; 
+    $password = $_POST["psw"];
+    $repeat_password = $_POST["psw-repeat"];
+    $sql = "INSERT INTO sign_upcli (user_id, email, password123, repeat_password) VALUES ('$id', '$email', '$password', '$repeat_password')";
 
-  $id = $_POST["user_id"];
-  $email = $_POST["email"]; 
-  $password = $_POST["psw"];
-  $repeat_password = $_POST["psw-repeat"];
-  $sql = "INSERT INTO sign_upcli (user_id, email, password123, repeat_password) VALUES ('$id', '$email', '$password', '$repeat_password')";
-
-  if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+    if ($conn->query($sql) === TRUE) {
+      header('location:login_main.php');
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+  }
+  else{
+    $_SESSION['error']= "ALL ENTRIES ARE MANDATORY";
+  } 
 }
  ?>
 

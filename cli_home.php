@@ -1,5 +1,6 @@
 <html>
 <head>
+	<link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">
 	<style>
 	 body {
         background: #555 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAB9JREFUeNpi/P//PwM6YGLAAuCCmpqacC2MRGsHCDAA+fIHfeQbO8kAAAAASUVORK5CYII=);
@@ -44,7 +45,7 @@
     }
     
     .form-wrapper input {
-        width: 330px;
+        width: 300px;
         height: 20px;
         padding: 10px 5px;
         float: left;    
@@ -147,25 +148,31 @@
 </head>
 <body>
 
-<form class="form-wrapper cf" action="search.php" method="POST">
+<form class="form-wrapper cf" action="search_case.php" method="POST">
   	<input type="text" placeholder="Enter your Case Id..." name="cid" required>
 	  <button type="submit" name="submit" >Search</button>
       <br>
       <br>
 </form>
+<div class=container>
+  <form action="index.php">
+  <div class='form-row justify-content-sm-center mt-3'>
+    <input class='btn btn-primary' type="submit" value="Logout">
+</div>
 
  </body>
 </html>
 
 <?php 
-error_reporting(E_ALL ^ E_NOTICE); 
-   $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ecourts";
+require 'conn.php';
+// error_reporting(E_ALL ^ E_NOTICE); 
+// $servername = "127.0.0.1:3308";
+// $username = "root";
+// $password = "";
+// $dbname = "ecourts";
 
 
-$conn = mysqli_connect($servername, $username, $password, $dbname);
+// $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 
 

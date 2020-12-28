@@ -3,7 +3,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <style>
  body{
-  background-image: url("lawyer.jpeg");
+  background-image: url("css/img/lawyer.jpeg");
 
  }
  h3{color:white;}
@@ -53,14 +53,7 @@
 
 <?php
   
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ecourts";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
+require 'conn.php';
 
 
   if(isset($_POST['submit']))
@@ -78,7 +71,7 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 
      if ($conn->query($sql) === TRUE) {
     echo "New record created successfully"; 
-    header("Location:mpay.php");
+    header("Location:pay.php");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

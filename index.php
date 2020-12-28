@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Tailor Home Page</title>
-	<link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/fixed.css">
 </head>
@@ -14,11 +14,11 @@
 	
 	<!----Navigation-->
 	<nav class="navbar navbar-expand-md  navbar-dark bg-dark ">
-	  <a class="navbar-brand p-0" href="#">
+	  <!-- <a class="navbar-brand p-0" href="#"> -->
 		<!---add logo here-->
-		<img src="css/img/logo2.jpg" style="height:60px;"/>
+		<!-- <img src="css/img/logo2.jpg" style="height:60px;"/> -->
 		<!---add logo here-->
-	  </a>
+	  <!-- </a> -->
 	
 	  <!-- Toggler/collapsibe Button -->
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -32,7 +32,7 @@
 			<a class="nav-link" href="#home">Home</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="prc.php">login</a>
+			<a class="nav-link" href="login_main.php">login</a>
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link" href="#about">About</a>
@@ -51,10 +51,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="caption text-center">
-		<h1>We speak in thread and needles</h1>
-		<a class="btn btn-outline-light btn-lg" href="customer_login.php">View Orders</a>
-	</div>
+	
 	<!---end landing page---->
 </div>
     <!--End home section-->

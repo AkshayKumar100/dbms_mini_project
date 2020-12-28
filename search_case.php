@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">
+
+
 <style>
 table, th, td {
-    border: 1px solid black;
+  padding:10px;
+  border: 1px solid white;
     border-collapse: collapse;
+    text-align: center;
 }
 
  
  body{
-  background-image: url("lawyer.jpeg");
-
+  background-image: url("css/img/search_case.svg");
  }
- td{color: black;
- padding: 10px;
+table{
+  border: 1px solid white;
+  
+  width: 75%;
+  margin: auto;
+}
+
+ td{
+   border: 1px solid white;
+  color: white;
+  padding: 10px;
 }
  th{
   color: black;
@@ -23,8 +39,8 @@ table, th, td {
 
 </head>
 <body>
-  <br>
-  <table style="margin: 250px; " width='70%'height='35%' border='0'>
+
+  <table class='table-resposive mt-5' width='70%'height='35%' border='0'>
 
 
   <tr  bgcolor='red'>
@@ -40,16 +56,7 @@ table, th, td {
 
 
 <?php 
-include("homec.php");
-
-   $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ecourts";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
+require_once 'conn.php';
 
 if(isset($_POST['submit']))
   {
@@ -75,11 +82,18 @@ while($res = mysqli_fetch_array($result)) {
 
   ?>
   </table>
-  <br>
-  <H1><i><u>Thank you!!!!!!!!!</u></i></H1><br><br>
-  <form action="prc.php">
-    <input type="submit" value="BACK" />
-</form><br>
-<br>
+
+
+<div class=container>
+  <form action="cli_home.php">
+  <div class='form-row justify-content-sm-center mt-3'>
+    <input class='btn btn-primary' type="submit" value="BACK">
+</div>
+  <!-- <div class='justify-content-md-center form-row'>
+    <input class='col-md-3' type="submit" value="BACK" />
+  </div> -->
+</form>
+</div>
+</div>
 </body>
 </html>

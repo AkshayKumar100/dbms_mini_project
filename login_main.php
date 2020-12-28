@@ -1,9 +1,15 @@
+<?php
+if(isset($_SESSION['msg'])){
+  echo '<h2>'.$_SESSION['msg'].'</h2>';
+}
+?>
+
 <HTML>
 <HEAD>
 	<link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">
   <style>
  body{
-  background-image: url("lawyer.jpeg");
+  background-image: url("css/img/lawyer.jpeg");
 
  }
  h2{color:white;}
@@ -20,7 +26,7 @@
         <div class=' col-md-6 text-center'>
           <H2 style="text-align:center"><B><I>FOR CLIENT LOGIN</B></I></H1>
           <br>
-          <img class='rounded-circle' src="CLIENT.jpg" width="150" height="150" /><br>
+          <img class='rounded-circle' src="css/img/CLIENT.jpg" width="150" height="150" /><br>
           USER_ID:<br>
           <input type="text" name="user">
           <br>
@@ -31,7 +37,7 @@
           <p>To sign up <a href="CLISIGN.php" class="need">click here!!!!!!!</a></p>
 </div>
 <div class='col-md-6 text-center'>
-          <H2 style="text-align:absolute"><B><I>FOR ADVOCATE LOGIN</B></I></H1> <br><img class='rounded-circle' src="PIC1.png" width="150" height="150"/><br>
+          <H2 style="text-align:absolute"><B><I>FOR ADVOCATE LOGIN</B></I></H1> <br><img class='rounded-circle' src="css/img/advocate.png" width="150" height="150"/><br>
           ADV ID:<br>
           <input type="text" name="adv_id">
           <br>
@@ -39,8 +45,8 @@
           <input type="password" name="passwd">
           <br>
           <br>
-          <button class="btn btn-primary" onclick="location.href='homea.html';" name="signup">Submit</button>
-          <p>To sign up <a href="REGADV.PHP" class="need">click here!!!!!!!</a></p>
+          <button class="btn btn-primary" onclick="location.href='adv_home.php';" name="signup">Submit</button>
+          <p>To sign up <a href="reg_adv.php" class="need">click here!!!!!!!</a></p>
 </div>
         </form>
       </div>
@@ -51,16 +57,16 @@
 
 
 <?php 
-$servername = "127.0.0.1:3307";
-$username = "kvp";
-$password = "123";
-$dbname = "ecourts";
+// $servername = "127.0.0.1:3308";
+// $username = "root";
+// $password = "";
+// $dbname = "ecourts";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
+// // Create connection
+// $conn = mysqli_connect($servername, $username, $password, $dbname);
+// // Check connection
 
-
+require 'conn.php';
 
 if(isset($_POST['submit'])){
 
@@ -72,12 +78,13 @@ if(isset($_POST['submit'])){
    if($row = mysqli_fetch_array($sql))
    {
     session_start();
-    header("location:homec.php");
+    header("location:cli_home.php");
    }
 
    else
    {
-    echo "failed to login ";
+    //  TODO :: error center
+    echo "<div class='container-fluid' style='background-color:white;width:min;'><h2 class='text-center' style='color:red'> Failed to login </h2></div>";
    }
 
 
@@ -98,7 +105,8 @@ if(isset($_POST['signup'])){
    if($row = mysqli_fetch_array($sql))
    {
     session_start();
-    header("location:homea.html");
+    $_SESSION['Login']= true;
+    header("location:adv_home.php");
    }
 
    else
