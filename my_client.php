@@ -1,20 +1,43 @@
+<!-- //todo:: table size -->
+
 <html>
 <head>  
+ <link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">
  <style>
  body{
-  background-image: url("css/img/lawyer.jpeg");
+   margin: 0;
+ background-color:gray;
 
  }
- td{color: white;}
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+ table{
+  border: 1px solid white;
+  
+  width: 75%;
+  margin: auto;
+}
+
+ td{
+   border: 1px solid white;
+  color: white;
+  padding: 10px 10px;
+}
+ th{
+  color: black;
+  padding:10px;
+  
+ }
 </style>
 </head>
 
 <body>
 
 
-  <table width='50%'height='10%' border='0'>
-
-  <tr bgcolor='dodgerblue'>
+ <table class='table-resposive mt-5' width='70%' border='0'>
+  <tr bgcolor='red'>
                 
    <th>Client_id</th>
     <th>Client_Name</th> 
@@ -41,11 +64,19 @@
   ?>
   </table>
   <br>
-  <form action="add_client.php">
-    <input type="submit" value="ADD CLIENT" />
-  </form><br>
-  <form action="adv_home.php">
-    <input type="submit" value="BACK" />
-</form><br>
+  <div class="fluid-container">
+    <div class='row justify-content-md-center'>
+      <div class='col-md-1'>
+        <form action="add_client.php">
+          <input class="btn btn-primary"type="submit" value="ADD CLIENT" />
+        </form>
+      </div>
+      <div class='col-md-1'>
+        <form action="adv_home.php">
+          <input class="btn btn-primary"type="submit" value="BACK" />
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

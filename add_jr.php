@@ -1,13 +1,21 @@
+<?php
+session_start();
+if(isset($_SESSION['msg'])){
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+}
+?>
 <HTML>
 <HEAD>
+  <title>Add jumior</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <style>
   body{
-  background-image: url("css/img/lawyer.jpeg");
+  background-color:grey;
 
  }
- label{color:yellow;}
- h3{color:blue;}
+ label{color:black;}
+ h3{color:black;}
 </style>
 </HEAD>
 <BODY>
@@ -34,7 +42,9 @@
           <input type="text" name="expr" class="form-control">
         </div>
         <br>
-       <input type="submit" name="submit">
+       <input class='btn btn-primary' type="submit" name="submit">
+        <input class="btn btn-primary" type="submit" value="BACK" name="back">
+
       </form>
     </div>
     <div class="col-md-4"></div>
@@ -50,9 +60,14 @@
 <?php
   
 require'conn.php';
+if(isset($_POST['back'])){
+  header('Location:jr_adv.php');
+}
 
   if(isset($_POST['submit']))
   {
+    if(!empty($_POST['name'])&&!empty($_POST['no'])&&!empty($_POST['type'])&&!empty($_POST['expr']))
+    {
     $jname = $_POST['name'];  
     $cno = $_POST['no']; 
     $typ = $_POST['type'];
@@ -66,8 +81,10 @@ require'conn.php';
      if ($conn->query($sql) === TRUE) {
     echo "New record created successfully"; 
     header("Location:jr_adv.php");
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+} 
+}else {
+    $_SESSION['msg']= "All fields are required ";
+    header('location:add_jr.php');
 }
   }
 

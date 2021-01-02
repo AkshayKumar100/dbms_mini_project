@@ -17,29 +17,37 @@ header("Location:fee.php");
 ?>
 
 <html>
-<head>	
+<head>
+<link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">	
 	<title>Edit Data</title>
 		  <style>
   body{
-  background-image: url("lawyer.jpeg");
+  background-color:grey;
 
  }
- label{color:yellow;}
- h3{color:blue;}
- h2{color:dodgerblue;}
+ label{color:black;font-weight:bold;}
+ h2{color:black;}
 </style>
 </head>
 
 <body>
-	<form  method="post" action=" " >
-		
-				<h3>CASE_ID<h3>
-				<input type="text" name="caseid" placeholder="Entercase id"><br>
-			
-			<h3>AMOUNT<h3>
-				<input type="number" name="amount" placeholder="Enter Amount" ><br><br>
-			<input type="submit" name="update" value="Update" ></td>
-			
+	<form  method="post" action=" " class="mt-5" >
+		<div class=row>
+		<div class=col-md-4></div>
+		<div class="form-group col-md-4">
+				<lable>CASE_ID<lable>
+				<input type="text" name="caseid" placeholder="Entercase id" class="form-control">
+				</div>
+				</div>
+
+		<div class=row>
+		<div class=col-md-4></div>
+		<div class="form-group col-md-4">	
+			<lable>AMOUNT<lable>
+				<input type="number" name="amount" placeholder="Enter Amount" class="form-control" ><br><br>
+			<input class="btn btn-primary" type="submit" name="update" value="Update" ></td>
+		</div>
+				</div>
 	</form>
 </body>
 </html>

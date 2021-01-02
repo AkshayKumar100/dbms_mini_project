@@ -1,12 +1,5 @@
 <?php
- $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ecourts";
-
-
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
+ require "conn.php";
 
 
 $CLIENT_ID = $_GET['CLIENT_ID'];
@@ -14,7 +7,7 @@ $CLIENT_ID = $_GET['CLIENT_ID'];
 $result = mysqli_query($conn, "DELETE FROM client WHERE CLIENT_ID='$CLIENT_ID'");
 
 //redirecting to the display page (index.php in our case)
-header("Location:mclient.php");
+header("Location:my_client.php");
 ?>
 
 

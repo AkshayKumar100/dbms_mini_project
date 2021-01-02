@@ -1,19 +1,39 @@
 <html>
 <head>  
+  <link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">
  <style>
- body{
-  background-image: url("css/img/lawyer.jpeg");
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+body{
+  background-color:grey;
+}
+table{
+  border: 1px solid white;
+  
+  width: 75%;
+  margin: auto;
+}
 
+ td{
+   border: 1px solid white;
+  color: white;
+  padding: 10px;
+}
+ th{
+  color: black;
+  padding:10px;
+  
  }
- td{color: white;}
+ 
 </style>
 </head>
 
 <body>
 
 
-  <table width='50%'height='15%' border='0'>
-
+ <table class='table-resposive mt-5' width='70%' border='0'>
   <tr bgcolor='yellow'>
                 
    <th>JR_NAME</th>
@@ -42,12 +62,20 @@ if (!$conn) {
   </table>
   <br>
   <br>
-  <form action="add_jr.php">
-    <input type="submit" value="Add JR" />
-  </form><br>
-  <form action="adv_home.php">
-    <input type="submit" value="BACK" />
-</form><br>
+  <div class="fluid-container">
+    <div class='row justify-content-md-center'>
+      <div class='col-md-1'>
+        <form action="add_jr.php">
+          <input class="btn btn-primary" type="submit" value="Add JR" />
+        </form>
+      </div>
+      <div class='col-md-1'>
+        <form action="adv_home.php">
+          <input class="btn btn-primary" type="submit" value="BACK" />
+        </form>
+      </div>
+    </div>
+  </div>
   
 </body>
 </html>

@@ -180,7 +180,7 @@ if(isset($_POST['submit'])){
   }
   else{
     $_SESSION['error']= "ALL ENTRIES ARE MANDATORY";
+    header('location:CLISIGN.php');
   } 
 }
  ?>
-

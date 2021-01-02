@@ -22,28 +22,50 @@ $nexthearingdate = date('Y-m-d', strtotime($_POST['nexthearingdate']));
 
 <html>
 <head>	
+<link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">
 	<title>Edit Data</title>
 	  <style>
   body{
-  background-image: url("lawyer.jpeg");
-
+  background-color:grey;
  }
  label{color:yellow;}
- h3{color:blue;}
+ label{color:black;font-weight:bold;}
 </style>
 </head>
 
 <body>
-	<form  method="post" >
-		
-				<h3>CASE ID</h3>
-				<input type="text" name="caseid" placeholder="case id"><br>
-			<h3>LAST HEARING DATE</h3>
-				<input type="date" name="lasthearingdate" placeholder="lasthearingdate"><br>
-			<h3>NEXT HEARING DATE</h3>
-				<input type="date" name="nexthearingdate" placeholder="nexthearingdate" ><br><br>
-			<input type="submit" name="update" value="Update"></td>
+<div class='fluid-container mt-5'>
+	<form  method="post">
+	<div class=row>
+		<div class=col-md-4></div>
+		<div class="form-group col-md-4">
+			<label>CASE ID</label>
+			<input type="text" name="caseid" placeholder="case id" class="form-control">
+		</div>
+	</div>
+	<div class=row>
+		<div class=col-md-4></div>
+		<div class="form-group col-md-4">
+			<label>LAST HEARING DATE</label>
+			<input type="date" name="lasthearingdate" placeholder="lasthearingdate" class="form-control"><br>
+		</div>
+
+	</div>
+	<div class=row>	
+		<div class=col-md-4></div>
+		<div class="form-group col-md-4">
+			<label>NEXT HEARING DATE</label>
+			<input type="date" name="nexthearingdate" placeholder="nexthearingdate" class="form-control" >
+		</div>
+	</div>
+	<div class=row>
+		<div class=col-md-4></div>
+		<div class="form-group col-md-4">
+			<input class="btn btn-primary" type="submit" name="update" value="Update"></td>
+		</div>
+	</div>
 			
 	</form>
+</div>
 </body>
 </html>

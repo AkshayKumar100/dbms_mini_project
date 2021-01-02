@@ -1,13 +1,20 @@
+<?php
+session_start();
+if(isset($_SESSION['msg'])){
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+}
+?>
 <HTML>
 <HEAD>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <style>
  body{
-  background-image: url("css/img/lawyer.jpeg");
+  background-color:grey;
 
  }
- h3{color:white;}
- label{color: white;}
+ h3{color:black;}
+ label{color: black;}
 </style>
 </HEAD>
 <BODY>
@@ -39,13 +46,13 @@
           <input type="number" name="amt" class="form-control">
         </div>
        <br>
-         <input type="submit" name="submit">
+         <input class="btn btn-primary" type="submit" name="submit">
+         <input class="btn btn-primary" type="submit" value="BACK" name="back">
       </form>
     </div>
     <div class="col-md-4"></div>
   </div>
 </div>
-
 </BODY>
 </HTML>
 
@@ -54,15 +61,18 @@
 <?php
   
 require 'conn.php';
-
+if(isset($_POST['back'])){
+  header('Location:fee.php');
+}
 
   if(isset($_POST['submit']))
   {
+     if(!empty($_POST['id'])&&!empty($_POST['caid'])&&!empty($_POST['clid'])&&!empty($_POST['dat'])&&!empty($_POST['amt']))
+    {
     $pid = $_POST['id']; 
     $casid = $_POST['caid'];  
     $clieid = $_POST['clid']; 
-    $dt = $_POST['dat'];
-      
+    $dt = $_POST['dat']; 
     $at = $_POST['amt'];  
     
 
@@ -72,9 +82,11 @@ require 'conn.php';
      if ($conn->query($sql) === TRUE) {
     echo "New record created successfully"; 
     header("Location:pay.php");
+}
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    $_SESSION['msg']= "All fields are required ";
+    header('location:pay.php');
 }
   }
 
-?>s
+?>

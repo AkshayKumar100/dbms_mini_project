@@ -1,6 +1,8 @@
-<?php
+<?php 
+session_start();
 if(isset($_SESSION['msg'])){
   echo '<h2>'.$_SESSION['msg'].'</h2>';
+  unset($_SESSION['msg']);
 }
 ?>
 
@@ -77,7 +79,6 @@ if(isset($_POST['submit'])){
 
    if($row = mysqli_fetch_array($sql))
    {
-    session_start();
     header("location:cli_home.php");
    }
 
@@ -104,14 +105,13 @@ if(isset($_POST['signup'])){
 
    if($row = mysqli_fetch_array($sql))
    {
-    session_start();
     $_SESSION['Login']= true;
     header("location:adv_home.php");
    }
 
    else
    {
-    echo "failed to login ";
+    $_SESSION['msg'] =  "failed to login ";
    }
 
 

@@ -1,20 +1,20 @@
 <?php
-
-if(!isset($_SESSION['LOGIN'])){
-    $_SESSION['msg']="Access denied.";
-    header("Location:login_main.php");
+session_start();
+if(isset($_SESSION['msg'])){
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
 }
-
 ?>
 <HTML>
 <HEAD>
+  <title>Add case </title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <style>
   body{
-  background-image: url("lawyer.jpeg");
+  background-color:grey;
 
  }
- label{color:yellow;}
+ label{color:black;}
  h3{color:blue;}
 </style>
 </HEAD>
@@ -50,7 +50,8 @@ if(!isset($_SESSION['LOGIN'])){
           <input type="date" name="nhd" class="form-control">
         </div>
          <br>
-      <input type="submit" name="submit">
+      <input class='btn btn-primary' type="submit" name="submit">
+      <input class="btn btn-primary" type="submit" value="BACK" name="back">
       </form>
     </div>
     <div class="col-md-4"></div>
@@ -62,10 +63,14 @@ if(!isset($_SESSION['LOGIN'])){
 
 <?php
  require 'conn.php';
-
+if(isset($_POST['back'])){
+  header('Location:my_case.php');
+}
 
   if(isset($_POST['submit']))
   {
+    if(!empty($_POST['cid'])&&!empty($_POST['type'])&&!empty($_POST['details'])&&!empty($_POST['clid'])&&!empty($_POST['lhd'])&&!empty($_POST['nhd']))
+    {
     $id = $_POST['cid'];  
     $type = $_POST['type']; 
     $det = $_POST['details'];
@@ -81,8 +86,9 @@ if(!isset($_SESSION['LOGIN'])){
      if ($conn->query($sql) === TRUE) {
     echo "New record created successfully"; 
      header("Location:my_case.php");
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+} }else {
+    $_SESSION['msg']= "All fields are required ";
+    header('location:add_case.php');
 }
   }
 

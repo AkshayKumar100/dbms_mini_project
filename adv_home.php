@@ -1,25 +1,25 @@
+<!-- content center
+ bg color -->
+
 <html>
 <head>
+<title>Advacate home</title>
 <style>
 body {
-    background-image: url("lawyer.jpeg");
+  margin:0;
+  margin-bottom:0;
+    background-color:rgb(116, 86, 97);
     background-size: 100%;
 }
 h2 {
   /*color: #2fecf7;*/
 }
-</style>
-</head>
-<body>
-  <style>
+
 @import "compass/css3";
 
 *{
   font-family:'Lato', sans-serif; 
   font-size:100%;
-}
-html{
-  background: #d4d4d4;
 }
 a{
   color:#2fecf7;
@@ -27,7 +27,7 @@ a{
 }
 .blocks {
   width:470px;
-  margin:0 auto;
+  margin:200px auto;
   font-size: 30px;
   text-align: center;
 }
@@ -67,7 +67,7 @@ a{
 }
 
 </style>
-
+</head>
 
 
 
@@ -78,25 +78,26 @@ a{
 
 
 <link href='https://fonts.googleapis.com/css?family=Lato:900' rel='stylesheet' type='text/css'>
+<body>
 
-<div class="blocks">
+<div class="blocks ">
   <a href="#">
     
-          <h2><a href = "my_case.php"><i><u>MY_CASES</u></i></a></h2>
+          <h2><a href = "my_case.php"><i>MY CASES</i></a></h2>
      
   </a>
   <a href="#">
     
-          <h2><a href="my_client.php"><i><u>MY_CLIENTS</u></i></a></h2>
+          <h2><a href="my_client.php"><i>MY CLIENTS</i></a></h2>
      
-          <h2><a href="jr_adv.php"><i><u>JUNIOR_ADVOCATES</u></i></a></h2>
+          <h2><a href="jr_adv.php"><i>JUNIOR ADVOCATES</i></a></h2>
    
   </a>
   <a href="#">
     
-          <h2><a href="fee.php"><i><u>FEES</u></i></a></h2>
+          <h2><a href="fee.php"><i>FEES</i></a></h2>
       
-          <h2><a href="index.php"><i><u>LOG_OUT</u></i></a></h2>
+          <h2><a href="index.php"><i>LOGOUT</i></a></h2>
    
   </a>
 </div>

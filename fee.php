@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
- 
+<link rel="stylesheet" href="bootstrap-4.5.3/css/bootstrap.min.css">
+ <style>
  body{
-  background-image: url("css/img/lawyer.jpeg");
+   margin: 0;
+ background-color:gray;
 
  }
- td{color: white;}
-</style>
+ table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+ table{
+  border: 1px solid white;
+  
+  width: 75%;
+  margin: auto;
+}
 
-
+ td{
+   border: 1px solid white;
+  color: white;
+  padding: 10px 10px;
+}
+ th{
+  color: black;
+  padding:10px;
+  
+ }
 </style>
 </head>
 <body>
-  <table width='50%'height='15%' border='0'>
+  <table class='table-resposive mt-5' width='70%' border='0'>
 
   <tr bgcolor='yellow'>
                 
@@ -48,15 +61,25 @@ table, th, td {
   ?>
   </table>
   <br>
-<form action="pay.php">
-    <input type="submit" value="ADD PAYMENT" />
-</form><br>
-<form action="update_pay.php">
-    <input type="submit" value="UPDATE" href="up1.php">
-</form><br> 
-<form action="adv_home.php">
-    <input type="submit" value="BACK" />
-</form><br>
+  <div class="fluid-container">
+    <div class='row justify-content-md-center'>
+      <div class='col-md-1 '>
+        <form action="pay.php">
+            <input class="btn btn-primary" type="submit" value="ADD PAYMENT" />
+        </form>
+      </div>
+
+      <div class='col-md-1 ml-5'>
+        <form action="update_pay.php">
+            <input class="btn btn-primary" type="submit" value="UPDATE" href="up1.php">
+        </form>
+      </div>
+
+      <div class='col-md-1'>
+        <form action="adv_home.php">
+            <input class="btn btn-primary" type="submit" value="BACK" />
+        </form>
+      </div>
 
 </body>
 </html>

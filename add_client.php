@@ -1,15 +1,24 @@
+<?php
+session_start();
+if(isset($_SESSION['msg'])){
+    echo $_SESSION['msg'];
+    unset($_SESSION['msg']);
+}
+?>
 <HTML>
 <HEAD>
+  <title>Add client</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <style>
   body{
-  background-image: url("lawyer.jpeg");
+  background-color:grey;
 
  }
- label{color:yellow;}
- h3{color:blue;}
+ label{color:black;font-weight:bold;}
+ h3{color:black;}
 </style>
 </HEAD>
+
 <BODY>
 <h3 style="text-align: center;"><u>Client  form</u></h3>
 
@@ -39,7 +48,8 @@
           <input type="text" name="caid" class="form-control">
         </div>
        <br>
-         <input type="submit" onclick="location.href='mclient.php'" name="submit">
+         <input class='btn btn-primary' type="submit" onclick="location.href='mclient.php'" name="submit">
+         <input class="btn btn-primary" type="submit" value="BACK" name="back">
 
       </form>
     </div>
@@ -54,10 +64,14 @@
 
 <?php
   require "conn.php";
-
+if(isset($_POST['back'])){
+  header('Location:my_client.php');
+}
 
   if(isset($_POST['submit']))
   {
+    if(!empty($_POST['nam'])&&!empty($_POST['caid'])&&!empty($_POST['id'])&&!empty($_POST['cont'])&&!empty($_POST['add']))
+    {
     $cname = $_POST['nam']; 
     $casid = $_POST['caid'];  
     $clieid = $_POST['id']; 
@@ -72,8 +86,10 @@
      if ($conn->query($sql) === TRUE) {
     echo "New record created successfully"; 
     header("Location:my_client.php");
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+}  else {
+    $_SESSION['msg']= "All fields are required ";
+    header('location:add_client.php');
 }
   }
 
