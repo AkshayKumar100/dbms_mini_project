@@ -53,7 +53,7 @@ table{
 <?php 
 require 'conn.php';
 
-  $result = mysqli_query($conn, "SELECT * FROM case_ ORDER BY CASE_ID DESC");  
+  $result = mysqli_query($conn, "CALL `mycases`();");  
   while($res = mysqli_fetch_array($result)) {     
     echo "<tr>";
                 echo "<td>".$res['CASE_ID']."</td>";
